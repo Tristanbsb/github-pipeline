@@ -1,6 +1,6 @@
 {
-  "name": "test",
-  "version": "1.0.0",
+  "name": "@Tristanbsb/test",
+  "version": "1.0.1",
   "description": "premier test",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/Tristanbsb/github-pipeline#readme",
   "publishConfig": {
-    "@tristanbsb:registry": "https://npm.pkg.github.com"
+    "@Tristanbsb:registry": "https://npm.pkg.github.com"
   }
 }
 
