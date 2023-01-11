@@ -9,7 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: Tristanbsb/github-pipeline/.github/workflows/reusable-workflow.yml@test4.2
+      - uses: actions/setup-node@v3
+        with:
+            node-version: 16
+      - name: Run tests
+        run: npm test
+      - name: Build App
+        run: npm run build
+      - name: Deploy App
+        run: npm run deploy
        
   publish-gpr:
     needs: build
