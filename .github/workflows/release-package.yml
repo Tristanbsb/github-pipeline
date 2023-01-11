@@ -1,37 +1,27 @@
 name: Node.js Package
 
 on:
-  release:
-    types: [created]
+  workflow_dispatch:
+    inputs:
+      NAME:
+        description: Name of folder
+        default: docker
+        required: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-            node-version: 16
-      - name: Run tests
-        run: npm test
-      - name: Build App
-        run: npm run build
-      - name: Deploy App
-        run: npm run deploy
-       
-  publish-gpr:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      packages: write
-      contents: read
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          registry-url: https://npm.pkg.github.com/
-      - run: npm ci
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Create docker folder
+        run: mkdir ${{ github.event.inputs.NAME }}
+      - name: Create Dockerfile
+        run: |
+          echo "FROM node:12.18.3-alpine" >> docker/Dockerfile
+          echo "WORKDIR /app" >> docker/Dockerfile
+          echo "COPY package*.json ./" >> docker/Dockerfile
+          echo "RUN npm install" >> docker/Dockerfile
+          echo "COPY . ." >> docker/Dockerfile
+          echo "EXPOSE 3000" >> docker/Dockerfile
+          echo "CMD [\"npm\", \"start\"]" >> docker/Dockerfile
+          
