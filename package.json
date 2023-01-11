@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/Tristanbsb/github-pipeline#readme",
   "publishConfig": {
-    "@Tristanbsb:registry": "https://npm.pkg.github.com"
+    "@Tristanbsb:registry": "https://github.com/Tristanbsb/github-pipeline"
   }
 }
