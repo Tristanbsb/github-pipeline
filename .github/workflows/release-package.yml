@@ -12,9 +12,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: cat .env >> $GITHUB_ENV
-      - run: npm ci
-      - run: npm test
+      - uses: ./reusable-workflow
+        
 
   publish-gpr:
     needs: build
