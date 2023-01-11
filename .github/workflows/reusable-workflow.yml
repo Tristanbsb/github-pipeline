@@ -1,0 +1,19 @@
+name: Reusable workflow
+
+on: 
+  push:
+    branches: 
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run tests
+      run: npm test
+    - name: Build App
+      run: npm run build
+    - name: Deploy App
+      run: npm run deploy

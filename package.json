@@ -1,6 +1,6 @@
 {
   "name": "@Tristanbsb/test",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "premier test",
   "main": "index.js",
   "scripts": {
@@ -20,4 +20,3 @@
     "@Tristanbsb:registry": "https://npm.pkg.github.com"
   }
 }
-
