@@ -1,0 +1,28 @@
+name: CI/CD
+
+on: 
+  workflow_dispatch:
+    inputs:
+      ENVIRONMENT_NAME:
+        description: Name of environement
+        required: true
+env:
+  MY_VAR: value
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        step1:
+          - env:
+              SPECIFIC_VAR: "${{ env.MY_VAR }}-specific"
+        step2:
+          - env:
+              SPECIFIC_VAR: "${{ env.MY_VAR }}-other-specific"
+
+    steps:
+    - name: Step
+      env:
+        SPECIFIC_VAR: "${{ matrix.env.SPECIFIC_VAR }}"
+      run: echo "$SPECIFIC_VAR"
