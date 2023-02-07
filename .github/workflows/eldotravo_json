@@ -1,0 +1,106 @@
+[
+  {
+    "step": "test-phpunit-back-api-1",
+    "differences": {
+      "name": "Test back phpunit: API Part 1",
+      "sql_db": "test_db_api_1",
+      "simple-phpunit_options": "./vendor/bin/simple-phpunit --testsuite 'api_1' --log-junit ./test-reports/junit-api-1.xml"
+    }
+  },
+  {
+    "step": "test-phpunit-back-api-2",
+    "differences": {
+      "name": "Test back phpunit: API Part 2",
+      "sql_db": "test_db_api_2",
+      "simple-phpunit_options": "./vendor/bin/simple-phpunit --testsuite 'api_2' --log-junit ./test-reports/junit-api-2.xml"
+    }
+  },
+  {
+    "step": "test-phpunit-back-api-3",
+    "differences": {
+      "name": "Test back phpunit: API Part 3",
+      "sql_db": "test_db_api_2",
+      "simple-phpunit_options": "./vendor/bin/simple-phpunit --testsuite 'api_3' --log-junit ./test-reports/junit-api-2.xml"
+    }
+  },
+  {
+    "step": "test-phpunit-back-command",
+    "differences": {
+      "name": "Test back phpunit: Command",
+      "sql_db": "test_db_others",
+      "simple-phpunit_options": "./vendor/bin/simple-phpunit --testsuite 'command' --log-junit ./test-reports/junit-others.xml"
+    }
+  },
+  {
+    "step": "test-phpunit-back-communications",
+    "differences": {
+      "name": "Test back phpunit: Communications",
+      "sql_db": "test_db_others",
+      "simple-phpunit_options": "./vendor/bin/simple-phpunit --testsuite 'communications' --log-junit ./test-reports/junit-others.xml"
+    }
+  },
+  {
+    "step": "test-phpunit-back-entity",
+    "differences": {
+      "name": "Test back phpunit: Entity",
+      "sql_db": "test_db_others",
+      "simple-phpunit_options": "./vendor/bin/simple-phpunit --testsuite 'entity' --log-junit ./test-reports/junit-others.xml"
+    }
+  },
+  {
+    "step": "test-phpunit-back-legacy",
+    "differences": {
+      "name": "Test back phpunit: Legacy",
+      "sql_db": "test_db_others",
+      "simple-phpunit_options": "./vendor/bin/simple-phpunit --testsuite 'legacy' --log-junit ./test-reports/junit-others.xml"
+    }
+  },
+  {
+    "step": "test-phpunit-back-sendgrid",
+    "differences": {
+      "name": "Test back phpunit: Sendgrid",
+      "sql_db": "test_db_others",
+      "simple-phpunit_options": "./vendor/bin/simple-phpunit --testsuite 'service' --log-junit ./test-reports/junit-others.xml"
+    }
+  },
+  {
+    "step": "test-phpunit-back-testutils",
+    "differences": {
+      "name": "Test back phpunit: TestUtils",
+      "sql_db": "test_db_others",
+      "simple-phpunit_options": "./vendor/bin/simple-phpunit --testsuite 'testutils' --log-junit ./test-reports/junit-others.xml"
+    }
+  },
+  {
+    "step": "test-phpunit-back-workflow",
+    "differences": {
+      "name": "Test back phpunit: Workflow",
+      "sql_db": "test_db_others",
+      "simple-phpunit_options": "./vendor/bin/simple-phpunit --testsuite 'workflow' --log-junit ./test-reports/junit-others.xml"
+    }
+  },
+  {
+    "step": "test-phpunit-back-others",
+    "differences": {
+      "name": "Test back phpunit: Others",
+      "sql_db": "test_db_others",
+      "simple-phpunit_options": "./vendor/bin/simple-phpunit --testsuite 'others' --log-junit ./test-reports/junit-others.xml"
+    }
+  },
+  {
+    "step": "test-phpcsfixer-back",
+    "differences": {
+      "name": "Test back phpcsfixer",
+      "composer": "composer install --working-dir=tools/php-cs-fixer",
+      "simple-phpunit_options": "./tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --dry-run -vvv --using-cache no --config tools/php-cs-fixer/.php-cs-fixer.php"
+    }
+  },
+  {
+    "step": "test-phpstan-back",
+    "differences": {
+      "name": "Test back PHPStan",
+      "composer": "composer install --working-dir=tools/phpstan",
+      "simple-phpunit_options": "./tools/phpstan/vendor/bin/phpstan --memory-limit=512M analyse"
+    }
+  }
+]
