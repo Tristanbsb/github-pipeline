@@ -6,12 +6,13 @@ on:
       ENVIRONMENT_NAME:
         description: Name of environement
         required: true
-env:
-  MY_VAR: value
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      MY_VAR: value
+
     strategy:
       matrix:
         step1:
