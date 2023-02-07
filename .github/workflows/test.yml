@@ -8,17 +8,13 @@ on:
         required: true
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    env:
-      MY_VAR: value
-
+  example_matrix:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest] # Defining Ubuntu and Windows OS
         version: [10, 12, 14] # Defining versions (three Node.js versions)
-        runs-on: ${{ matrix.os }}
-        steps:
-          - uses: actions/setup-node@v3
-            with:
-              node-version: ${{ matrix.version }}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.version }}
