@@ -12,7 +12,8 @@ jobs:
         test_cases: [api_1, api_2]
         include:
         - test_cases: api_1
-          test: 1
+          sql_db: test_db_others
+          option: echo "Echo de l' ${{ matrix.test_cases }}"
         - test_cases: api_2
           test: 2
     steps:
@@ -21,4 +22,5 @@ jobs:
 
     - name: "PHP Unit test - ${{ matrix.test_cases }}"
       run: | 
-         echo "${{ matrix.test_cases }} va avec ${{ matrix.test }}"
+         echo "${{ matrix.test_cases }} utilise la db ${{ matrix.sql_db }}"
+         ${{ matrix.test_cases }}
