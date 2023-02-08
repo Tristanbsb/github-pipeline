@@ -1,19 +1,26 @@
-name: CI/CD
+name: Sample Run Include Syntax Json Format
 
-on: 
-  workflow_dispatch:
-    inputs:
-      ENVIRONMENT_NAME:
-        description: Name of environement
-        required: true
+on: push
+# The Trigger event 
+
 
 jobs:
-  example_matrix:
+  job1:
+    runs-on: ubuntu-latest
+    outputs:
+       matrix: ${{ steps.setmatrix.outputs.matrix }}
+    steps:
+      - name: Set Dynamic Matrix
+        id: setmatrix
+        run: |
+           matrixStringifiedObject="{\"include\":[{\"os\":\"ubuntu-latest\"},{\"os\":\"windows-latest\"},{\"node\":[{\"10\"},{\"12\"},{\"14\"}]},]}"
+           echo "::set-output name=matrix::$matrixStringifiedObject"
+  job2:
+    needs: job1
     strategy:
-      matrix:
-        ${{fromJson(test.yml)}}
+      matrix: ${{ fromJson(needs.job1.outputs.matrix) }}
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.version }}
+          node-version: ${{ matrix.node }}
