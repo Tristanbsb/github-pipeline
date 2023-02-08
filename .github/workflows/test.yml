@@ -23,8 +23,8 @@ jobs:
 
     - name: Print job name
       run: | 
-        echo "Job name: $JOB_NAME"
+        echo "Job name: ${{ matrix.job1.env.JOB_NAME }}
 
     - name: Build
       run: |
-        echo "Building $JOB_NAME"
+        echo "Building ${{ matrix.env.JOB_NAME }}
