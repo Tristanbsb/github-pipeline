@@ -21,4 +21,4 @@ jobs:
 
     - name: "PHP Unit test - ${{ matrix.test_cases }}"
       run: | 
-         echo "${{ matrix.test_cases }}"
+         echo "${{ matrix.test_cases }} va avec ${{ matrix.test }}"
