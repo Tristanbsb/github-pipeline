@@ -13,10 +13,10 @@ jobs:
         include:
         - test_cases: api_1
           sql_db: test_db_others
-          option: echo "Echo de l' ${{ matrix.test_cases }}"
+          option: echo "Echo de l' "
         - test_cases: api_2
           sql_db: test_db_others_2
-          option: echo "Echo de l' ${{ matrix.test_cases }}"
+          option: echo "Echo de l' "
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -24,4 +24,4 @@ jobs:
     - name: "PHP Unit test - ${{ matrix.test_cases }}"
       run: | 
          echo "${{ matrix.test_cases }} utilise la db ${{ matrix.sql_db }}"
-         ${{ matrix.test_cases }}
+         ${{ matrix.option }} ${{ matrix.test_cases }}
