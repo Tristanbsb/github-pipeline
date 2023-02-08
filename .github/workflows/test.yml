@@ -17,9 +17,9 @@ jobs:
            echo "::set-output name=matrix::$matrixStringifiedObject"
   job2:
     needs: job1
+    runs-on: ubuntu-latest
     strategy:
       matrix: ${{ fromJson(needs.job1.outputs.matrix) }}
-    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/setup-node@v3
         with:
