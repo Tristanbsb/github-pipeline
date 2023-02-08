@@ -21,3 +21,5 @@ jobs:
       uses: actions/checkout@v2
 
     - name: "PHP Unit test - ${{ matrix.test_cases }}"
+      run: | 
+         echo "${{ matrix.test_cases }}"
