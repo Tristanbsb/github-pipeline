@@ -12,7 +12,7 @@ jobs:
       - name: Set Dynamic Matrix
         id: setmatrix
         run: |
-          matrixStringifiedObject="{\"include\":[{\"node\":\"10\",\"node\":\"12\",\"node\":\"14\"}]}"
+          matrixStringifiedObject="{\"include\":[{\"node\":[\"10\",\"12\",\"14\"]}]}"
           echo "::set-output name=matrix::$matrixStringifiedObject"
   job2:
     needs: job1
