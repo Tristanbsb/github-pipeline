@@ -16,4 +16,4 @@ jobs:
 
     - name: "PHP Unit test - ${{ matrix.test_cases }}"
       run: | 
-        echo $TEST_CASES
+        echo ${{ matrix.test_cases }}
