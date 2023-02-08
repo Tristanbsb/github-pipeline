@@ -15,7 +15,8 @@ jobs:
           sql_db: test_db_others
           option: echo "Echo de l' ${{ matrix.test_cases }}"
         - test_cases: api_2
-          test: 2
+          sql_db: test_db_others_2
+          option: echo "Echo de l' ${{ matrix.test_cases }}"
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
