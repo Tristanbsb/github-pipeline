@@ -2,7 +2,6 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
 
 jobs:
   build:
@@ -10,21 +9,12 @@ jobs:
 
     strategy:
       matrix:
-        job1:
-          - env:
-              JOB_NAME: job1
-        job2:
-          - env:
-              JOB_NAME: job2
-
+        test_cases: [api_1, api_2]
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Print job name
+    - name: "PHP Unit test - ${TEST_CASES}"
       run: | 
-        echo "Job name: ${{ matrix.job1.env.JOB_NAME }}"
+        echo $TEST_CASES
 
-    - name: Build
-      run: |
-        echo "Building $JOB_NAME"
