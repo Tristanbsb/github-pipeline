@@ -1,25 +1,30 @@
-name: Sample Run Include Syntax Json Format
+name: CI
 
-on: push
-
+on:
+  push:
+    branches: [ main ]
 
 jobs:
-  job1:
+  build:
     runs-on: ubuntu-latest
-    outputs:
-       matrix: ${{ steps.setmatrix.outputs.matrix }}
-    steps:
-      - name: Set Dynamic Matrix
-        id: setmatrix
-        run: |
-          matrixStringifiedObject="{\"include\":[{\"node\":\"10\"},{\"node\":\"12\"},{{\"node\":\"14\"}]}"
-          echo "::set-output name=matrix::$matrixStringifiedObject"
-  job2:
-    needs: job1
-    runs-on: ubuntu-latest
+
     strategy:
-      matrix: ${{ fromJson(needs.job1.outputs.matrix) }}
+      matrix:
+        job1:
+          - env:
+              JOB_NAME: job1
+        job2:
+          - env:
+              JOB_NAME: job2
+
     steps:
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node }}
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Print job name
+      run: | 
+        echo "Job name: $JOB_NAME"
+
+    - name: Build
+      run: |
+        echo "Building $JOB_NAME"
