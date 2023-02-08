@@ -27,4 +27,4 @@ jobs:
 
     - name: Build
       run: |
-        echo "Building ${{ matrix.env.JOB_NAME }}"
+        echo "Building $JOB_NAME"
